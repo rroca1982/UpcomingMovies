@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Genre:"; ObjectID = "I3V-us-Nz0"; */
+"I3V-us-Nz0.text" = "Genre:";
+
+/* Class = "UILabel"; text = "Star Wars Episode VIII: The Last Jedi"; ObjectID = "ZVG-cp-EXa"; */
+"ZVG-cp-EXa.text" = "Star Wars Episode VIII: The Last Jedi";
+
+/* Class = "UILabel"; text = "December 15th, 2017"; ObjectID = "rIs-4q-b8w"; */
+"rIs-4q-b8w.text" = "December 15th, 2017";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xvP-ry-Est"; */
+"xvP-ry-Est.text" = "Label";

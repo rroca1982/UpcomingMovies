@@ -15,7 +15,7 @@ public struct URLParameterEncoder: ParameterEncoder {
         guard let url = urlRequest.url else {
             throw SwiftyRestKitError.missingURL
         }
-        print("entered encoding: " + url.absoluteString)
+
         if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {
             
             urlComponents.queryItems = [URLQueryItem]()

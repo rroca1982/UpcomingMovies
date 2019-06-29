@@ -10,6 +10,7 @@ import UIKit
 
 class UpcomingMoviesViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     private var movieListViewModel = MovieListViewModel()
@@ -22,11 +23,17 @@ class UpcomingMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Upcoming Movies".localized()
+        
+        navigationController?.navigationBar.barStyle = .blackOpaque
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         datasource = MovieListDataSource(movieListViewModel, tableView: tableView)
         tableView.dataSource = datasource
         tableView.delegate = self
         tableView.tableFooterView = UIView.init(frame: .zero)
 
+        activityIndicator.startAnimating()
         fetchUpcomingMovies(fromService: MovieService())
     }
 
@@ -48,6 +55,7 @@ class UpcomingMoviesViewController: UIViewController {
                         ErrorHandler.sharedInstance.handleError(error, from:    strongSelf)
                     }
                 }
+                self?.activityIndicator.stopAnimating()
             }
             
         }
