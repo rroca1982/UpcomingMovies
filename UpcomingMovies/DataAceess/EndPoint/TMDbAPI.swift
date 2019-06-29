@@ -14,7 +14,6 @@ enum TMDbAPI {
     case allGenres
     
     //MARK: Movies
-    case inTheaters(page: Int)
     case upcomingMovies(page: Int)
     case movieDetails(movieID: Int, appendToResponse: String)
     
@@ -50,9 +49,6 @@ extension TMDbAPI: EndPointType {
             return "genre/movie/list"
             
         //MARK: Movies
-        case .inTheaters:
-            return "movie/now_playing"
-            
         case .upcomingMovies:
             return "movie/upcoming"
             
@@ -82,10 +78,6 @@ extension TMDbAPI: EndPointType {
             return .requestWith(bodyParameters: nil, urlParameters: urlParameters)
             
         //MARK: Movies
-        case .inTheaters(let page):
-            let urlParameters: Parameters = ["language" : defaultLanguage, "api_key" : apiClientKey!, "page" : "\(page)"]
-            return .requestWith(bodyParameters: nil, urlParameters: urlParameters)
-            
         case .upcomingMovies(let page):
             let urlParameters: Parameters = ["language" : defaultLanguage, "api_key" : apiClientKey!, "page" : page]
             return .requestWith(bodyParameters: nil, urlParameters: urlParameters)

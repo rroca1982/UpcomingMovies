@@ -6,7 +6,6 @@
 //  Copyright © 2019 Rodolfo Roca. All rights reserved.
 //
 
-
 import UIKit
 
 class ErrorHandler: NSObject {

@@ -9,15 +9,7 @@
 import Foundation
 
 struct MovieService {
-    
-    func fetchNowPlayingMovies(page: Int, completion: @escaping (Result<MovieCollection>) -> Void) {
-        manager.dispatcher.request(.inTheaters(page: page)) { (data, response, error) in
-            let result = self.processResult(data, response, error)
-            completion(result)
-        }
-        
-    }
-    
+
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<MovieCollection>) -> Void) {
         manager.dispatcher.request(.upcomingMovies(page: page)) { (data, response, error) in
             
@@ -86,8 +78,6 @@ struct MovieService {
             return Result.Failure(SwiftyRestKitError.lostConnection)
         }
     }
-    
-    
 }
 
 extension MovieService: Service {
