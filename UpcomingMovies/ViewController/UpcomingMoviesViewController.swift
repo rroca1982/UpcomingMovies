@@ -10,6 +10,7 @@ import UIKit
 
 class UpcomingMoviesViewController: UIViewController {
 
+    @IBOutlet weak var failedFetchView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,7 +27,6 @@ class UpcomingMoviesViewController: UIViewController {
         title = "Upcoming Movies".localized()
         
         navigationController?.navigationBar.barStyle = .blackOpaque
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         datasource = MovieListDataSource(movieListViewModel, tableView: tableView)
         tableView.dataSource = datasource
@@ -46,13 +46,20 @@ class UpcomingMoviesViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .Success(let movieCollection):
-                    self?.movieListViewModel.addMovies(movieCollection.results)
-                    self?.page = movieCollection.page
-                    self?.totalPages = movieCollection.totalPages
-                    self?.tableView.reloadData()
+                    if movieCollection.page == 1 && movieCollection.results.count == 0 {
+                        self?.showFailedFetchView()
+                    } else {
+                        self?.movieListViewModel.addMovies(movieCollection.results)
+                        self?.page = movieCollection.page
+                        self?.totalPages = movieCollection.totalPages
+                        self?.tableView.reloadData()
+                    }
                 case .Failure(let error):
                     if let strongSelf = self {
                         ErrorHandler.sharedInstance.handleError(error, from:    strongSelf)
+                        if self?.movieListViewModel.movies.count == 0 {
+                            self?.showFailedFetchView()
+                        }
                     }
                 }
                 self?.activityIndicator.stopAnimating()
@@ -62,6 +69,21 @@ class UpcomingMoviesViewController: UIViewController {
         
     }
     
+    @IBAction func retryButtonTapped(_ sender: UIButton) {
+        hideFailedFetchView()
+        fetchUpcomingMovies(fromService: MovieService())
+    }
+    
+    func showFailedFetchView() {
+        tableView.isHidden = true
+        failedFetchView.isHidden = false
+    }
+    
+    func hideFailedFetchView() {
+        failedFetchView.isHidden = true
+        tableView.isHidden = false
+        activityIndicator.startAnimating()
+    }
 }
 
 extension UpcomingMoviesViewController : UITableViewDelegate {
