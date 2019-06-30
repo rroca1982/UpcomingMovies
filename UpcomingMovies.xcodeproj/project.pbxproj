@@ -101,6 +101,7 @@
 		0AE5D6A222C599BC0013D60A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AE5D6A122C599BC0013D60A /* Assets.xcassets */; };
 		0AE5D6A522C599BC0013D60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AE5D6A322C599BC0013D60A /* LaunchScreen.storyboard */; };
 		0AE5D6BB22C599BD0013D60A /* UpcomingMoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE5D6BA22C599BD0013D60A /* UpcomingMoviesUITests.swift */; };
+		0AF2480922C90242009B5D59 /* SearchMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2480822C90242009B5D59 /* SearchMoviesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +196,7 @@
 		0AE5D6B622C599BD0013D60A /* UpcomingMoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UpcomingMoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE5D6BA22C599BD0013D60A /* UpcomingMoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesUITests.swift; sourceTree = "<group>"; };
 		0AE5D6BC22C599BD0013D60A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AF2480822C90242009B5D59 /* SearchMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,6 +421,7 @@
 		0A5623D122C80349000F883B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0AF2480822C90242009B5D59 /* SearchMoviesViewController.swift */,
 				0AE5D69C22C599BB0013D60A /* UpcomingMoviesViewController.swift */,
 			);
 			path = ViewController;
@@ -667,6 +670,7 @@
 				0A478D7422C59D8600B44B26 /* UITableView+Helpers.swift in Sources */,
 				0A478D7622C59D8600B44B26 /* SegueHandlerType.swift in Sources */,
 				0A478D8722C5AD6200B44B26 /* Movie.swift in Sources */,
+				0AF2480922C90242009B5D59 /* SearchMoviesViewController.swift in Sources */,
 				0A478D5722C59D5800B44B26 /* Service.swift in Sources */,
 				0A478D7222C59D8600B44B26 /* UIStoryboard+Helpers.swift in Sources */,
 				0A478D8A22C5AD8C00B44B26 /* Genre.swift in Sources */,

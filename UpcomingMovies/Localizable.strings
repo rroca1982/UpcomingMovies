@@ -6,4 +6,11 @@
   Copyright © 2019 Rodolfo Roca. All rights reserved.
 */
 
+// MARK: - Upcoming Movies
 "Upcoming Movies" = "Upcoming Movies";
+
+// MARK: - Search Movies
+"Search Movies" = "Search Movies";
+"Find movies by their title" = "Find movies by their title";
+"No results found" = "No results found";
+"Search for movies by its' title." = "Search for movies by its' title.";

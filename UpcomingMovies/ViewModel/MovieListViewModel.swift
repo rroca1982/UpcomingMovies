@@ -15,6 +15,10 @@ class MovieListViewModel {
         self.movies.append(contentsOf: movies)
     }
     
+    func removeAllMovies() {
+        movies.removeAll()
+    }
+    
     func numberOfRows(_ section: Int) -> Int {
         return movies.count
     }
