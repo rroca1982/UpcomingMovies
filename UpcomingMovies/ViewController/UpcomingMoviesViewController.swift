@@ -36,7 +36,7 @@ class UpcomingMoviesViewController: UIViewController {
         activityIndicator.startAnimating()
         fetchUpcomingMovies(fromService: MovieService())
     }
-
+    
     func fetchUpcomingMovies<S: Gettable>(fromService service: S) {
         guard let service = service as? MovieService else {
             return
@@ -84,6 +84,15 @@ class UpcomingMoviesViewController: UIViewController {
         tableView.isHidden = false
         activityIndicator.startAnimating()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.movieDetailsFromUpcoming.rawValue {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destination = segue.destination as! MovieDetailsViewController
+                    destination.movie = movieListViewModel.movies[indexPath.row]
+            }
+        }
+    }
 }
 
 extension UpcomingMoviesViewController : UITableViewDelegate {
@@ -98,6 +107,15 @@ extension UpcomingMoviesViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: .movieDetailsFromUpcoming, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - SegueHandlerType conformance
+extension UpcomingMoviesViewController: SegueHandlerType {
+    
+    enum SegueIdentifier: String {
+        case movieDetailsFromUpcoming
     }
 }
