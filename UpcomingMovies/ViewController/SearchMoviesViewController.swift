@@ -129,16 +129,16 @@ class SearchMoviesViewController: UIViewController {
             noResultsLabel.text = "Search for movies by its' title.".localized()
         }
     }
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == SegueIdentifier.movieDetailsFromSearch.rawValue {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destination = segue.destination as! MovieDetailsViewController
+                destination.movie = movieListViewModel.movies[indexPath.row]
+            }
+        }
     }
-    */
-
 }
 
 // MARK: - SearchBar Delegates
@@ -174,6 +174,13 @@ extension SearchMoviesViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: .movieDetailsFromSearch, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension SearchMoviesViewController: SegueHandlerType {
+    enum SegueIdentifier: String {
+        case movieDetailsFromSearch
     }
 }

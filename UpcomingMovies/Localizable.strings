@@ -14,3 +14,7 @@
 "Find movies by their title" = "Find movies by their title";
 "No results found" = "No results found";
 "Search for movies by its' title." = "Search for movies by its' title.";
+
+// MARK: Movie Details
+"Movie Details" = "Movie Details";
+"Release date: " = "Release date: ";

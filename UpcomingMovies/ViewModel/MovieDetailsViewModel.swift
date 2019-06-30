@@ -16,7 +16,6 @@ struct MovieDetailsViewModel {
     var backdropImageURL: URL?
     let backdropPlaceholderImage: UIImage! = UIImage.init(named: "posterPlaceholderLarge")
     var releaseDate: String
-    var genre: String?
     var overview: String?
     
     init(model: Movie) {
@@ -30,10 +29,6 @@ struct MovieDetailsViewModel {
         
         if let backdropPath = model.backdropPath {
             self.backdropImageURL = URL.init(string: "https://image.tmdb.org/t/p/w300" + backdropPath)
-        }
-        
-        if model.genres.count > 0 {
-            genre = model.genres.first?.name
         }
         
         if let overview = model.overview {
