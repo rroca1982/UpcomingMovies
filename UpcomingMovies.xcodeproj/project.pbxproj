@@ -406,11 +406,11 @@
 		0A5623B522C7B259000F883B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0AF2481622C95879009B5D59 /* GenreCollectionCellViewModel.swift */,
 				0AF2481022C95746009B5D59 /* GenresViewModel.swift */,
-				0AF2480C22C918B6009B5D59 /* MovieDetailsViewModel.swift */,
+				0AF2481622C95879009B5D59 /* GenreCollectionCellViewModel.swift */,
 				0A5623CC22C7E0E6000F883B /* MovieListViewModel.swift */,
 				0A5623C822C7CA7F000F883B /* MovieListTableViewCellViewModel.swift */,
+				0AF2480C22C918B6009B5D59 /* MovieDetailsViewModel.swift */,
 				0A9FE79522C6F315000EA3D0 /* AlertViewModel.swift */,
 			);
 			path = ViewModel;
@@ -423,8 +423,8 @@
 				0AE5D69E22C599BB0013D60A /* Main.storyboard */,
 				0A5623DA22C82756000F883B /* MovieListTableViewCell.xib */,
 				0A5623C022C7BAD8000F883B /* MovieListTableViewCell.swift */,
-				0AF2481222C95816009B5D59 /* GenreCollectionViewCell.swift */,
 				0AF2481322C95817009B5D59 /* GenreCollectionViewCell.xib */,
+				0AF2481222C95816009B5D59 /* GenreCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

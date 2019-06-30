@@ -140,7 +140,7 @@
         <scene sceneID="l1I-k9-sQd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bGS-Zh-Jj4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Upcoming" id="Qn1-6P-2JG"/>
+                    <tabBarItem key="tabBarItem" title="Upcoming" image="upcomingIcon" id="Qn1-6P-2JG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dRf-xA-aEL">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -387,6 +387,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="upcomingIcon" width="30" height="32"/>
         <namedColor name="grayTextColor">
             <color name="ibMissingResourceColor" catalog="#$assets-com.apple.dt.DVTKit" colorSpace="catalog"/>
         </namedColor>
