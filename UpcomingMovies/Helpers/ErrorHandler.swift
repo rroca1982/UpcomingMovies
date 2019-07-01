@@ -40,13 +40,13 @@ class ErrorHandler: NSObject {
         var viewModel: AlertViewModel!
         
         if let error = error as? SwiftyRestKitError {
-            viewModel = AlertViewModel.init(model: error)
+            viewModel = AlertViewModel.init(networkErrorModel: error)
             
         } else if let error = error as? InternalError {
-            viewModel = AlertViewModel.init(model: error)
+            viewModel = AlertViewModel.init(internalErrorModel: error)
         } else {
             if let error = error {
-                viewModel = AlertViewModel.init(model: error)
+                viewModel = AlertViewModel.init(genericErrorModel: error)
             }
         }
         let alert = UIAlertController.init(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
