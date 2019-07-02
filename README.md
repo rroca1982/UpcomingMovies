@@ -3,7 +3,8 @@ A Simple app that display information about movies coming soon to theaters.
 
 Build instructions
 
-- Just press play to build and run in XCode
+- Just press play (Cmd+R) to build and run in XCode.
+- Alternatively, Cmd+U to run unit tests.
 
 List of third party libraries
 
