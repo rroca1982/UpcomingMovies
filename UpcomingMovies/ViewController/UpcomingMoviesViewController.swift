@@ -10,6 +10,7 @@ import UIKit
 
 class UpcomingMoviesViewController: UIViewController {
 
+    // MARK: - Properties
     @IBOutlet weak var failedFetchView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +22,7 @@ class UpcomingMoviesViewController: UIViewController {
     private var page = 0
     private var totalPages = 1
     
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,7 @@ class UpcomingMoviesViewController: UIViewController {
         fetchUpcomingMovies(fromService: MovieService())
     }
     
+    // MARK: - Data Fetch
     func fetchUpcomingMovies<S: Gettable>(fromService service: S) {
         guard let service = service as? MovieService else {
             return
@@ -69,11 +72,13 @@ class UpcomingMoviesViewController: UIViewController {
         
     }
     
+    // MARK: - Button Actions
     @IBAction func retryButtonTapped(_ sender: UIButton) {
         hideFailedFetchView()
         fetchUpcomingMovies(fromService: MovieService())
     }
     
+    // MARK: - Helper Methods
     func showFailedFetchView() {
         tableView.isHidden = true
         failedFetchView.isHidden = false
@@ -85,6 +90,7 @@ class UpcomingMoviesViewController: UIViewController {
         activityIndicator.startAnimating()
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.movieDetailsFromUpcoming.rawValue {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -95,6 +101,7 @@ class UpcomingMoviesViewController: UIViewController {
     }
 }
 
+// MARK: - TableView Delegate
 extension UpcomingMoviesViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

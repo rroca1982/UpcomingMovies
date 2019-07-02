@@ -10,6 +10,7 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     
+    // MARK: - Properties
     @IBOutlet weak var backdropImageView: UIImageView!
     @IBOutlet weak var posterHoldingView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -24,6 +25,7 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     
     private var datasource: GenresDataSource?
     
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +45,10 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
+    /*
+     * We are using WillMove(toParent: ) to control the navigation bar size
+     * to make the transition animation smoother.
+     */
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
         
@@ -59,6 +65,12 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
+        /*
+         * The calculation is made inside the block because viewWillTransition
+         * is called before the rotation and redrawing takes place.
+         * so this way we can wait for the rotation to end and then calculate
+         * the collection view content size height.
+         */
         coordinator.animate(alongsideTransition: nil, completion: { _ in
             DispatchQueue.main.async { [weak self] in
                 if let size = self?.collectionView.contentSize.height {
@@ -69,6 +81,7 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         })
     }
     
+    // MARK: - Setup
     fileprivate func setupMovieDetails() {
         let viewModel = MovieDetailsViewModel.init(model: movie)
         
@@ -100,6 +113,7 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     }
 }
 
+// MARK: - Collection View Flow Layout Delegate
 extension MovieDetailsViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

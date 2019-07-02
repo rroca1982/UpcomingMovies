@@ -10,6 +10,7 @@ import UIKit
 
 class SearchMoviesViewController: UIViewController {
 
+    // MARK: - Properties
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -23,6 +24,7 @@ class SearchMoviesViewController: UIViewController {
     private var page = 0
     private var totalPages = 1
     
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +42,7 @@ class SearchMoviesViewController: UIViewController {
         showNoResultsLabel()
     }
     
+    // MARK: - Setup
     fileprivate func setupSearchBarController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -53,6 +56,7 @@ class SearchMoviesViewController: UIViewController {
         definesPresentationContext = true
     }
     
+    // MARK: - Search methods
     func search(searchTerm: String) {
         isSearching = true
 
@@ -79,6 +83,7 @@ class SearchMoviesViewController: UIViewController {
         totalPages = 1
     }
     
+    // MARK: - Data Fetch
     func searchMovies<S: Gettable>(searchTerm: String, fromService service: S) {
         guard let service = service as? SearchService else {
             return
@@ -110,6 +115,7 @@ class SearchMoviesViewController: UIViewController {
         
     }
     
+    // MARK: - Helper methods
     func showNoResultsLabel() {
         tableView.isHidden = true
         noResultsLabel.isHidden = false
@@ -158,6 +164,7 @@ extension SearchMoviesViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - TableView Delegate
 extension SearchMoviesViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -179,6 +186,7 @@ extension SearchMoviesViewController : UITableViewDelegate {
     }
 }
 
+// MARK: - SegueHandlerType conformance
 extension SearchMoviesViewController: SegueHandlerType {
     enum SegueIdentifier: String {
         case movieDetailsFromSearch

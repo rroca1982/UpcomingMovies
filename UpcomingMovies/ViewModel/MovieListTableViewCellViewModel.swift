@@ -19,7 +19,11 @@ struct MovieListTableViewCellViewModel {
     init(model: Movie) {
         self.movieTitle = model.title
         
-        self.releaseDate = MovieListTableViewCellViewModel.setupReleaseDate(model.releaseDate)
+        if let date = model.releaseDate {
+            self.releaseDate = date.convertToReleaseDateString()
+        } else {
+            self.releaseDate = "Unknown release date".localized()
+        }
         
         if let posterPath = model.posterPath {
             self.posterImageURL = URL.init(string: "https://image.tmdb.org/t/p/w300" + posterPath)
@@ -28,15 +32,5 @@ struct MovieListTableViewCellViewModel {
         if model.genres.count > 0 {
             genre = model.genres.first?.name
         }
-    }
-    
-    private static func setupReleaseDate(_ date: Date?) -> String {
-        let dateFormatter = DateFormatter.init()
-        dateFormatter.dateStyle = .long
-        
-        if let date = date {
-            return dateFormatter.string(from: date)
-        }
-        return "Unknown release date"
     }
 }

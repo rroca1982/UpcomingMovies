@@ -15,14 +15,6 @@ extension UIColor {
         return UIColor.init(named: "primaryColor")!
     }
     
-    class var defaultBackgroundColor: UIColor {
-        return UIColor.init(named: "backgroundColor")!
-    }
-    
-    class var navigationTitleColor: UIColor {
-        return UIColor.init(named: "navigationTitleColor")!
-    }
-    
     class var randomColor: UIColor {
         let salmonColor = UIColor.init(r: 255, g: 95, b: 88)
         let orangeColor = UIColor.init(r: 250, g: 153, b: 23)
